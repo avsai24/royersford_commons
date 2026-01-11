@@ -1684,6 +1684,39 @@ footer {
     transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
 
+/* Immediate Hero Animations (Load-triggered) */
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-hero-text {
+    animation: heroFadeUp 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+    /* Tiny delay to ensure font loads */
+    opacity: 0;
+    /* Initial state */
+}
+
+.animate-hero-sub {
+    animation: heroFadeUp 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.animate-hero-btn {
+    animation: heroFadeUp 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
 /* Override javascript observer style for these specific classes */
 .visible.slide-in-left,
 .visible.slide-in-right,
