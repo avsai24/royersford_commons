@@ -56,40 +56,56 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerText = 'Sending...';
             btn.disabled = true;
 
-            // Simulate API call
-            setTimeout(() => {
-                // Show Success Modal
-                const modal = document.getElementById('success-modal');
-                const closeBtn = modal.querySelector('.modal-close');
-                const actionBtn = modal.querySelector('.modal-action-btn');
+            // Prepare template parameters (if needed, but sendForm handles inputs automatically)
+            // ensuring input names match template variables: name, email, phone, message
 
-                if (modal) {
-                    modal.classList.add('open');
-                    modal.setAttribute('aria-hidden', 'false');
+            const serviceID = 'service_plo1wic';
+            const templateID = 'template_56nu08u'; // Contact Us
+            const autoReplyTemplateID = 'template_so4czsy'; // Auto-Reply
 
-                    const closeModal = () => {
-                        modal.classList.remove('open');
-                        modal.setAttribute('aria-hidden', 'true');
-                        document.body.classList.remove('no-scroll');
-                    };
+            // Send both emails in parallel
+            Promise.all([
+                emailjs.sendForm(serviceID, templateID, form),
+                emailjs.sendForm(serviceID, autoReplyTemplateID, form)
+            ])
+                .then(() => {
+                    // Success
+                    const modal = document.getElementById('success-modal');
+                    const closeBtn = modal.querySelector('.modal-close');
+                    const actionBtn = modal.querySelector('.modal-action-btn');
 
-                    document.body.classList.add('no-scroll');
+                    if (modal) {
+                        modal.classList.add('open');
+                        modal.setAttribute('aria-hidden', 'false');
 
-                    // Close events
-                    closeBtn.addEventListener('click', closeModal);
-                    actionBtn.addEventListener('click', closeModal);
-                    modal.addEventListener('click', (e) => {
-                        if (e.target === modal) closeModal();
-                    });
-                } else {
-                    // Fallback if modal is missing (should vary rarely happen)
-                    alert('Thank you for your interest! You have been added to our VIP list.');
-                }
+                        const closeModal = () => {
+                            modal.classList.remove('open');
+                            modal.setAttribute('aria-hidden', 'true');
+                            document.body.classList.remove('no-scroll');
+                        };
 
-                form.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1000);
+                        document.body.classList.add('no-scroll');
+
+                        // Close events
+                        closeBtn.addEventListener('click', closeModal);
+                        actionBtn.addEventListener('click', closeModal);
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) closeModal();
+                        });
+                    } else {
+                        alert('Thank you! Your message has been sent.');
+                    }
+
+                    form.reset();
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }, (err) => {
+                    // Error
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    alert('Failed to send message. Please try again later or email us directly.');
+                    console.error('EmailJS Error:', err);
+                });
         });
     }
 
