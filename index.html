@@ -22,13 +22,15 @@
 <body>
     <header id="header">
         <div class="container">
-            <a href="#" class="logo">Royersford<span class="logo-accent">Commons</span></a>
+            <a href="#" class="logo">
+                <img src="images/logo.jpg" alt="Royersford Commons Logo">
+            </a>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#floorplans">Floor Plans</a></li>
                     <li><a href="#location">Location</a></li>
-                    <li><a href="#contact" class="btn-primary-sm">Contact Leasing</a></li>
+                    <li><a href="#contact" class="btn-primary-sm">Request a Tour</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
@@ -67,7 +69,7 @@
             <div class="slide-dots"></div>
             <div class="hero-content container">
                 <h1 class="fade-in">Experience Modern Living <br>in Royersford</h1>
-                <p class="fade-in delay-1">Leasing begins November 1, 2025. Discover your new home today.</p>
+                <p class="fade-in delay-1">Leasing Now! Discover your new home today.</p>
                 <div class="hero-cta fade-in delay-2">
                     <a href="#floorplans" class="btn-primary">View Floor Plans</a>
                     <a href="#contact" class="btn-outline">Contact Us</a>
@@ -112,12 +114,14 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="#contact" class="btn-secondary full-width">Check Availability</a>
+                            <button class="btn-secondary full-width btn-check-availability"
+                                data-floorplan="junior-1-bed" data-floorplan-name="Junior 1 Bedroom">Check
+                                Availability</button>
                         </div>
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="card plan-card featured">
+                    <div class="card plan-card featured delay-200">
                         <div class="featured-tag">Most Popular</div>
                         <div class="card-image">
                             <img src="images/1 Bed Apartments .webp" alt="1 Bedroom Floor Plan">
@@ -135,12 +139,13 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="#contact" class="btn-primary full-width">Check Availability</a>
+                            <button class="btn-primary full-width btn-check-availability" data-floorplan="1-bed"
+                                data-floorplan-name="1 Bedroom">Check Availability</button>
                         </div>
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="card plan-card">
+                    <div class="card plan-card delay-400">
                         <div class="card-image">
                             <img src="images/2 Beds:2 Baths.webp" alt="2 Bedroom Floor Plan">
                         </div>
@@ -157,7 +162,8 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <a href="#contact" class="btn-secondary full-width">Check Availability</a>
+                            <button class="btn-secondary full-width btn-check-availability" data-floorplan="2-bed"
+                                data-floorplan-name="2 Bedroom">Check Availability</button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +174,7 @@
         <section class="section features">
             <div class="container">
                 <div class="grid-2 align-center">
-                    <div class="feature-text">
+                    <div class="feature-text slide-in-left">
                         <h2>Why Royersford Commons?</h2>
                         <ul class="benefits-list">
                             <li>
@@ -215,7 +221,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="feature-image">
+                    <div class="feature-image slide-in-right">
                         <div class="image-wrapper">
                             <img src="images/drone view.jpeg" alt="Aerial View of Royersford Commons"
                                 style="border-radius: 12px; box-shadow: var(--shadow-lg);">
@@ -232,7 +238,7 @@
                     <div class="contact-info">
                         <h2>Get In Touch</h2>
                         <p class="mb-4">Contact us to receive exclusive updates and rent specials.
-                            Leasing starts soon!</p>
+                            Leasing Now!</p>
 
                         <div class="info-item">
                             <h4>Visit Us</h4>
@@ -357,8 +363,101 @@
         </div>
     </div>
 
+    <!-- Availability Modal (Unit Grid) -->
+    <div id="availability-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content availability-modal-content">
+            <button class="modal-close" aria-label="Close Modal">&times;</button>
+            <h3 id="availability-title">Available Units</h3>
+            <p id="availability-subtitle">Select your perfect home</p>
+
+            <div id="unit-grid" class="unit-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Unit Detail Modal -->
+    <div id="unit-detail-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content unit-detail-modal-content">
+            <div class="unit-modal-header">
+                <button class="modal-close" aria-label="Close Modal">&times;</button>
+                <button id="back-to-listing" class="back-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to listing
+                </button>
+            </div>
+
+            <div class="unit-detail-content">
+                <!-- Left: Floor Plan Image/Gallery -->
+                <div class="unit-detail-left">
+                    <div class="floorplan-badge">Floorplan & Photos</div>
+                    <div class="gallery-container">
+                        <div class="gallery-main">
+                            <img id="unit-gallery-main-image" src="" alt="Main View" class="unit-floorplan-img">
+                        </div>
+                        <div id="unit-gallery-thumbnails" class="gallery-thumbs">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Unit Details -->
+                <div class="unit-detail-right">
+                    <h2 id="unit-detail-number">Unit 312</h2>
+                    <p id="unit-detail-specs" class="unit-specs">1 bed, 1 bath | $1,845</p>
+                    <p id="unit-detail-disclaimer" class="unit-disclaimer">Price may not include required fees and
+                        charges</p>
+
+                    <div class="unit-action-buttons">
+                        <button id="request-tour-btn" class="btn-primary full-width">Request a tour</button>
+                        <button id="request-apply-btn" class="btn-secondary full-width">Request to apply</button>
+                    </div>
+
+                    <div id="unit-amenities-list" class="unit-amenities">
+                        <!-- Populated by JavaScript -->
+                    </div>
+
+                    <div class="unit-section">
+                        <h4>About the unit</h4>
+                        <p id="unit-description"></p>
+                    </div>
+
+                    <div class="unit-section">
+                        <h4>Appliances & Features</h4>
+                        <div id="unit-appliances-list" class="appliances-grid">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="unit-section">
+                        <h4>Lease terms</h4>
+                        <ul id="lease-terms-list" class="info-list">
+                            <!-- Populated by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <div class="unit-section">
+                        <h4>More building information</h4>
+                        <ul id="building-info-list" class="info-list">
+                            <!-- Populated by JavaScript -->
+                        </ul>
+                    </div>
+
+                    <div id="pricing-breakdown-section" class="unit-section" style="display: none;">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="script.js"></script>
     <script src="chat.js"></script>
+    <script src="availability.js"></script>
 </body>
 
 </html>

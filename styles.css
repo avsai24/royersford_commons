@@ -199,10 +199,18 @@ header .container {
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
 }
 
 .logo-accent {
@@ -281,14 +289,26 @@ header nav a:hover {
     object-fit: cover;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    transform: scale(1.05);
-    /* Slight zoom for ken burns effect start if desired, or just static */
+    transform: scale(1);
+    animation: kenBurnsZoom 20s ease-out infinite;
 }
 
 .hero-slideshow img.active {
     opacity: 1;
     z-index: 1;
 }
+
+/* Ken Burns Zoom Animation */
+@keyframes kenBurnsZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
+
 
 .slide-nav {
     position: absolute;
@@ -1017,6 +1037,7 @@ footer {
 }
 
 /* Success Modal */
+/* Success Modal & General Modal Overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1031,12 +1052,32 @@ footer {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-overlay.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+}
+
+/* Modal Content Animation */
+.modal-content {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.open .modal-content {
+    transform: scale(1);
 }
 
 .modal-content {
@@ -1105,4 +1146,670 @@ footer {
 
 .modal-action-btn {
     width: 100%;
+}
+
+/* Availability Modal */
+.availability-modal-content {
+    max-width: 800px;
+    width: 95%;
+}
+
+#availability-title {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+}
+
+#availability-subtitle {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.availability-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.availability-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.availability-table thead {
+    background-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.availability-table th {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.availability-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s;
+}
+
+.availability-table tbody tr:hover {
+    background-color: var(--bg-light);
+}
+
+.availability-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.availability-table td {
+    padding: 1rem 0.75rem;
+    color: var(--text-primary);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-available {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.status-coming-soon {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status-waitlist {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Mobile Responsiveness for Availability Table */
+@media (max-width: 768px) {
+    .availability-modal-content {
+        padding: 1.5rem;
+    }
+
+    .availability-table {
+        font-size: 0.8rem;
+    }
+
+    .availability-table th,
+    .availability-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    #availability-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Unit Grid Styles */
+.unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.unit-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.unit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.unit-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.unit-card-header h4 {
+    margin: 0;
+    color: var(--primary-dark);
+    font-size: 1.25rem;
+}
+
+.unit-card-body {
+    margin-bottom: 1.5rem;
+}
+
+.unit-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.unit-info-row .label {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.unit-info-row .value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.unit-info-row .value.price {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+/* Unit Detail Modal */
+/* Unit Detail Modal */
+/* Unit Detail Modal - Split View Configuration */
+.unit-detail-modal-content {
+    max-width: 1300px;
+    width: 95%;
+    height: 90vh;
+    /* Fixed height is REQUIRED for internal scrolling */
+    max-height: 90vh;
+    overflow: hidden;
+    /* Prevent main modal scroll */
+    padding: 0;
+    /* Removing padding from container to allow full-height columns */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header area (Close button, Back button) stays at top */
+.unit-modal-header {
+    padding: 1.5rem 2rem 0.5rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    z-index: 10;
+}
+
+.back-button {
+    /* ... existing styles ... */
+    margin-bottom: 0;
+    /* Adjusted for new header */
+}
+
+/* Main Content Area - Split Columns */
+.unit-detail-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    /* 60/40 Split */
+    height: 100%;
+    /* Fill remaining space */
+    overflow: hidden;
+    /* Contain scrolls */
+    gap: 0;
+    /* Remove gap, handle spacing via padding in cols */
+}
+
+/* Left Column - Gallery */
+/* Left Column - Gallery */
+.unit-detail-left {
+    height: 100%;
+    overflow-y: auto;
+    /* INDEPENDENT SCROLL 1 */
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+    /* Fixes badge positioning context */
+}
+
+/* Right Column - Description */
+.unit-detail-right {
+    height: 100%;
+    overflow-y: auto;
+    /* INDEPENDENT SCROLL 2 */
+    padding: 2rem;
+    position: relative;
+    /* Reset sticky */
+    top: auto;
+}
+
+/* ... headers ... */
+
+/* Vertical Gallery Styles (Replaces Slideshow) */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Space between photos */
+    width: 100%;
+}
+
+.gallery-image-wrapper {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--bg-light);
+}
+
+.gallery-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* or contain, depending on preference. Cover is better for layout consistency */
+}
+
+/* Remove old thumbnail and main/active styles if not used, or keep for safety. 
+   Overriding here for cleaner vertical flow. */
+.gallery-thumbs {
+    display: none;
+    /* Hide thumbnails in vertical mode */
+}
+
+
+.floorplan-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.unit-floorplan-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.unit-detail-right h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-dark);
+    font-size: 2rem;
+}
+
+.unit-specs {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.unit-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin: 0 0 1.5rem 0;
+}
+
+.unit-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.unit-amenities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.amenity-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.unit-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.unit-section:last-child {
+    border-bottom: none;
+}
+
+.unit-section h4 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+}
+
+.unit-section p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.appliances-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.appliance-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.info-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.9rem;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322c55e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Mobile Responsiveness for Unit Views */
+@media (max-width: 768px) {
+    .unit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Override Split View for Mobile */
+    .unit-detail-modal-content {
+        height: auto;
+        max-height: 90vh;
+        /* Restore max-height */
+        overflow-y: auto;
+        /* Restore modal scroll */
+        display: block;
+        /* Remove flex column if it interferes, or keep flex but reset height */
+        padding: 0;
+    }
+
+    .unit-modal-header {
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 20;
+        padding: 1rem 1.5rem 0.5rem;
+    }
+
+    .unit-detail-content {
+        display: block;
+        /* Stack columns */
+        height: auto;
+        overflow: visible;
+    }
+
+    .unit-detail-left,
+    .unit-detail-right {
+        height: auto;
+        overflow: visible;
+        padding: 1.5rem;
+        border-right: none;
+    }
+
+    .unit-detail-right {
+        border-top: 1px solid var(--border);
+    }
+
+    .unit-action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .unit-amenities {
+        grid-template-columns: 1fr;
+    }
+
+    .unit-detail-right h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Pricing Breakdown Styles */
+.pricing-calculator {
+    margin-top: 1rem;
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.pricing-calculator h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+    font-size: 1.25rem;
+}
+
+.pricing-group {
+    margin-bottom: 2rem;
+}
+
+.pricing-group h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ... existing pricing styles ... */
+
+/* Scroll Animation Utilities */
+.delay-100 {
+    transition-delay: 100ms !important;
+}
+
+.delay-200 {
+    transition-delay: 200ms !important;
+}
+
+.delay-300 {
+    transition-delay: 300ms !important;
+}
+
+.delay-400 {
+    transition-delay: 400ms !important;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+/* Override javascript observer style for these specific classes */
+.visible.slide-in-left,
+.visible.slide-in-right,
+.visible.scale-in {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+}
+
+.pricing-row.required-header,
+.pricing-row.optional-header {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding-top: 1rem;
+    border-bottom: none;
+}
+
+.pricing-row .price {
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.pricing-row.total-row {
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--border);
+    padding-top: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.pricing-row .price.total {
+    color: var(--accent);
+}
+
+.pricing-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ... existing pricing styles ... */
+.pricing-disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Gallery Styles */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.gallery-main {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--background-alt);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Show full image */
+    display: block;
+}
+
+.gallery-thumbs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--background-alt);
+}
+
+.gallery-thumbs::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-track {
+    background: var(--background-alt);
+    border-radius: 3px;
+}
+
+.gallery-thumbs::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 3px;
+}
+
+.gallery-thumb {
+    width: 80px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.gallery-thumb:hover {
+    opacity: 1;
+}
+
+.gallery-thumb.active {
+    border-color: var(--accent);
+    opacity: 1;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

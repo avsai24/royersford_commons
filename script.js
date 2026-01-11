@@ -186,10 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in, .card, .info-item').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    document.querySelectorAll('.fade-in, .card, .info-item, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+        // Only apply manual offset/opacity to legacy elements. 
+        // New elements (.slide-in-*) handle this via CSS.
+        if (el.matches('.fade-in, .card, .info-item')) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        }
         observer.observe(el);
     });
 

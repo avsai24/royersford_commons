@@ -36,13 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Auto-open on Scroll (Once)
+    // Auto-open when scrolling to bottom
     function handleScroll() {
-        if (!hasOpened && window.scrollY > 100) {
-            toggleChat();
-            hasOpened = true; // Prevent multiple auto-opens
-            // Remove listener after triggering
-            window.removeEventListener('scroll', handleScroll);
+        if (!hasOpened) {
+            const scrollPosition = window.innerHeight + window.scrollY;
+            const bodyHeight = document.body.offsetHeight;
+
+            // Trigger when within 100px of the bottom
+            if (scrollPosition >= bodyHeight - 100) {
+                toggleChat();
+                hasOpened = true;
+                window.removeEventListener('scroll', handleScroll);
+            }
         }
     }
 
