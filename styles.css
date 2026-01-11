@@ -45,6 +45,10 @@ body {
     overflow-x: hidden;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -1346,10 +1350,36 @@ footer {
     z-index: 10;
 }
 
+
+
 .back-button {
-    /* ... existing styles ... */
-    margin-bottom: 0;
-    /* Adjusted for new header */
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+.back-button:hover {
+    color: var(--primary-dark);
+}
+
+.back-button svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover svg {
+    transform: translateX(-4px);
 }
 
 /* Main Content Area - Split Columns */

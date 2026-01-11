@@ -70,7 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const closeModal = () => {
                         modal.classList.remove('open');
                         modal.setAttribute('aria-hidden', 'true');
+                        document.body.classList.remove('no-scroll');
                     };
+
+                    document.body.classList.add('no-scroll');
 
                     // Close events
                     closeBtn.addEventListener('click', closeModal);

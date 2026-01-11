@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show modal
         availabilityModal.classList.add('open');
         availabilityModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
     }
 
     // Function to open unit detail modal
@@ -401,18 +402,26 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show modal
         unitDetailModal.classList.add('open');
         unitDetailModal.setAttribute('aria-hidden', 'false');
+        // Ensure no-scroll is present (redundant check but safe)
+        document.body.classList.add('no-scroll');
     }
 
     // Function to close availability modal
     function closeAvailabilityModal() {
         availabilityModal.classList.remove('open');
         availabilityModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
     }
 
     // Function to close unit detail modal
     function closeUnitDetailModal() {
         unitDetailModal.classList.remove('open');
         unitDetailModal.setAttribute('aria-hidden', 'true');
+        // If we are NOT going back to availability modal, unlock scroll
+        // However, the logic for "Back to listing" immediately calls openAvailabilityModal
+        // which will re-add the class. So we can safely remove it here,
+        // OR we can make this smarter. But valid simple approach:
+        document.body.classList.remove('no-scroll');
     }
 
     // Attach event listeners to Check Availability buttons
