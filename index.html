@@ -9,7 +9,7 @@
         content="Discover Royersford Commons - New modern apartments in Royersford, PA. Studios, 1 & 2 Bedrooms available now. Join our VIP list for exclusive specials.">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+    <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -35,7 +35,7 @@
     <header id="header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="images/logo.jpg" alt="Royersford Commons Logo">
+                <img src="assets/images/logo.jpg" alt="Royersford Commons Logo">
             </a>
             <nav>
                 <ul>
@@ -58,11 +58,11 @@
         <section id="home" class="hero">
             <div class="hero-bg">
                 <div class="hero-slideshow">
-                    <img src="images/front view.jpeg" alt="Royersford Commons Front View" class="active">
-                    <img src="images/drone view.jpeg" alt="Royersford Commons Aerial View">
-                    <img src="images/side view full commons view.jpeg" alt="Royersford Commons Side View">
-                    <img src="images/top drone view.jpeg" alt="Royersford Commons Top Drone View">
-                    <img src="images/top view.jpeg" alt="Royersford Commons Top View">
+                    <img src="assets/images/front view.jpeg" alt="Royersford Commons Front View" class="active">
+                    <img src="assets/images/drone view.jpeg" alt="Royersford Commons Aerial View">
+                    <img src="assets/images/side view full commons view.jpeg" alt="Royersford Commons Side View">
+                    <img src="assets/images/top drone view.jpeg" alt="Royersford Commons Top Drone View">
+                    <img src="assets/images/top view.jpeg" alt="Royersford Commons Top View">
                 </div>
                 <div class="overlay"></div>
             </div>
@@ -111,7 +111,7 @@
                     <!-- Card 1 -->
                     <div class="card plan-card">
                         <div class="card-image">
-                            <img src="images/Junior 1 Bed Apartments.webp" alt="Junior 1 Bedroom Floor Plan">
+                            <img src="assets/images/Junior 1 Bed Apartments.webp" alt="Junior 1 Bedroom Floor Plan">
                         </div>
                         <div class="card-header">
                             <h3>Junior 1 Bedroom</h3>
@@ -136,7 +136,7 @@
                     <div class="card plan-card featured delay-200">
                         <div class="featured-tag">Most Popular</div>
                         <div class="card-image">
-                            <img src="images/1 Bed Apartments .webp" alt="1 Bedroom Floor Plan">
+                            <img src="assets/images/1 Bed Apartments .webp" alt="1 Bedroom Floor Plan">
                         </div>
                         <div class="card-header">
                             <h3>1 Bedroom</h3>
@@ -159,7 +159,7 @@
                     <!-- Card 3 -->
                     <div class="card plan-card delay-400">
                         <div class="card-image">
-                            <img src="images/2 Beds:2 Baths.webp" alt="2 Bedroom Floor Plan">
+                            <img src="assets/images/2 Beds:2 Baths.webp" alt="2 Bedroom Floor Plan">
                         </div>
                         <div class="card-header">
                             <h3>2 Bedroom</h3>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="feature-image slide-in-right">
                         <div class="image-wrapper">
-                            <img src="images/drone view.jpeg" alt="Aerial View of Royersford Commons"
+                            <img src="assets/images/drone view.jpeg" alt="Aerial View of Royersford Commons"
                                 style="border-radius: 12px; box-shadow: var(--shadow-lg);">
                         </div>
                     </div>
@@ -243,53 +243,45 @@
             </div>
         </section>
 
-        <!-- Location / Contact Section -->
+        <!-- Contact Section -->
         <section id="contact" class="section bg-dark text-white">
             <div class="container">
-                <div class="grid-2 gap-large">
-                    <div class="contact-info">
-                        <h2>Get In Touch</h2>
-                        <p class="mb-4">Contact us to receive exclusive updates and rent specials.
-                            Leasing Now!</p>
-
-                        <div class="info-item">
-                            <h4>Visit Us</h4>
-                            <p>624 Main Street,<br>Royersford, PA 19468</p>
-                        </div>
-
-                        <div class="info-item">
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:rent@royersfordcommons.com"
-                                    class="link-light">rent@royersfordcommons.com</a></p>
-                        </div>
-
-                        <div class="info-item realtor-box">
-                            <h4>Realtors</h4>
-                            <p>We Cooperate! Contact us for details.</p>
-                        </div>
+                <div class="contact-layout-centered">
+                    <div class="contact-header text-center mb-5">
+                        <h2 style="color: var(--white);">Leasing Inquiry</h2>
+                        <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">
+                            We invite you to contact us for exclusive updates and rent specials. Our team is ready to
+                            welcome you home.
+                        </p>
                     </div>
 
-                    <div class="contact-form-wrapper">
+                    <div class="contact-form-wrapper" style="max-width: 700px; margin: 0 auto;">
                         <form id="vipForm" class="modern-form">
-                            <h3>Leasing Inquiry</h3>
-                            <div class="form-group">
-                                <label for="name">Full Name <span class="required-mark">*</span></label>
-                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="name">Full Name <span class="required-mark">*</span></label>
+                                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="required-mark">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
+                                </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="email">Email Address <span class="required-mark">*</span></label>
                                 <input type="email" id="email" name="email" required placeholder="name@example.com">
                             </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number <span class="required-mark">*</span></label>
-                                <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
-                            </div>
+
                             <div class="form-group">
                                 <label for="message">Message <span class="required-mark">*</span></label>
-                                <textarea id="message" name="message" rows="4" required
-                                    placeholder="I'm interested in a 1 Bedroom..."></textarea>
+                                <textarea id="message" name="message" rows="5" required
+                                    placeholder="I'm interested in the 1 Bedroom unit. Please send more details..."></textarea>
                             </div>
-                            <button type="submit" class="btn-submit">SUBMIT INQUIRY</button>
+
+                            <div class="form-footer">
+                                <button type="submit" class="btn-submit full-width">SUBMIT INQUIRY</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -308,10 +300,52 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Royersford Commons</div>
+            <div class="footer-container">
+                <!-- Brand & Contact -->
+                <div class="footer-col brand-col">
+                    <div class="footer-logo">Royersford Commons</div>
+                    <p class="footer-desc">Experience modern luxury living in the heart of Royersford. Your new home
+                        awaits.</p>
+                    <div class="footer-contact-details">
+                        <p>624 Main Street, Royersford, PA 19468</p>
+                        <a href="mailto:rent@royersfordcommons.com">rent@royersfordcommons.com</a>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="footer-col nav-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#floorplans">Floor Plans</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social / Instagram Creative -->
+                <div class="footer-col social-col">
+                    <h4>Stay Connected</h4>
+                    <p>Follow us for resident events, new unit tours, and community updates.</p>
+                    <a href="https://www.instagram.com/royersfordcommons/" target="_blank" rel="noopener noreferrer"
+                        class="btn-instagram">
+                        <div class="insta-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                        <span>Follow @royersfordcommons</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Royersford Commons. All rights reserved.</p>
-                <div class="footer-links">
+                <div class="footer-legal">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
                 </div>
@@ -471,9 +505,9 @@
     </div>
 
 
-    <script src="script.js"></script>
-    <script src="chat.js"></script>
-    <script src="availability.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script src="assets/js/availability.js"></script>
 </body>
 
 </html>

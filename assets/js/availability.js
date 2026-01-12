@@ -1,7 +1,7 @@
 // Enhanced Availability Data with Detailed Unit Information
 const availabilityData = {
     'junior-1-bed': {
-        floorPlanImage: 'images/Junior 1 Bed Apartments.webp',
+        floorPlanImage: 'assets/images/Junior 1 Bed Apartments.webp',
         beds: 0,
         baths: 1,
         units: [
@@ -47,7 +47,7 @@ const availabilityData = {
         ]
     },
     '1-bed': {
-        floorPlanImage: 'images/1 Bed Apartments .webp',
+        floorPlanImage: 'assets/images/1 Bed Apartments .webp',
         beds: 1,
         baths: 1,
         units: [
@@ -93,21 +93,21 @@ const availabilityData = {
         ]
     },
     '2-bed': {
-        floorPlanImage: 'images/2 Beds:2 Baths.webp',
+        floorPlanImage: 'assets/images/2 Beds:2 Baths.webp',
         images: [
-            'images/2 Beds:2 Baths.webp', // Floor plan as first image
-            'images/2bed/image1.webp',
-            'images/2bed/image2.webp',
-            'images/2bed/image3.webp',
-            'images/2bed/image4.webp',
-            'images/2bed/image5.webp',
-            'images/2bed/image6.webp',
-            'images/2bed/image7.webp',
-            'images/2bed/image8.webp',
-            'images/2bed/image9.webp',
-            'images/2bed/image10.webp',
-            'images/2bed/image11.webp',
-            'images/2bed/image12.webp'
+            'assets/images/2 Beds:2 Baths.webp', // Floor plan as first image
+            'assets/images/2bed/image1.webp',
+            'assets/images/2bed/image2.webp',
+            'assets/images/2bed/image3.webp',
+            'assets/images/2bed/image4.webp',
+            'assets/images/2bed/image5.webp',
+            'assets/images/2bed/image6.webp',
+            'assets/images/2bed/image7.webp',
+            'assets/images/2bed/image8.webp',
+            'assets/images/2bed/image9.webp',
+            'assets/images/2bed/image10.webp',
+            'assets/images/2bed/image11.webp',
+            'assets/images/2bed/image12.webp'
         ],
         beds: 2,
         baths: 2,
